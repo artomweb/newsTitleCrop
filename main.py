@@ -33,10 +33,6 @@ def main():
 
 
 def getArticles(articles, word):
-
-    # articles = ["https://www.bbc.co.uk/news/world-europe-59948920",
-    #             "https://www.bbc.co.uk/news/uk-england-59968307", "https://www.bbc.co.uk/news/health-59969785", "https://www.bbc.co.uk/news/uk-england-essex-59983193", "https://www.bbc.co.uk/news/uk-england-tees-59965761", "https://www.bbc.co.uk/news/uk-england-york-north-yorkshire-59967813", "https://www.bbc.co.uk/news/world-europe-59948920", "https://www.bbc.co.uk/news/uk-england-sussex-59953004", "https://www.bbc.co.uk/news/uk-scotland-scotland-business-59916356", "https://www.bbc.co.uk/news/uk-northern-ireland-59915018", "https://www.bbc.co.uk/news/uk-england-cambridgeshire-59907612", "https://www.bbc.co.uk/news/world-59901547", "https://www.bbc.co.uk/news/uk-northern-ireland-59916454", "https://www.bbc.co.uk/news/uk-england-stoke-staffordshire-59901883", "https://www.bbc.co.uk/news/uk-england-surrey-59898058", "https://www.bbc.co.uk/news/uk-scotland-59893246", "https://www.bbc.co.uk/news/world-asia-india-59890816", "https://www.bbc.co.uk/news/entertainment-arts-59889228",  "https://www.bbc.co.uk/news/uk-england-hampshire-59882944", "https://www.bbc.co.uk/news/world-middle-east-59853772", "https://www.bbc.co.uk/news/uk-59870825",  "https://www.bbc.co.uk/news/uk-england-lancashire-59868933", "https://www.bbc.co.uk/news/world-australia-59864428", "https://www.bbc.co.uk/news/health-59862568", "https://www.bbc.co.uk/news/world-africa-59832843",  "https://www.bbc.co.uk/news/uk-wales-59847816"]
-
     for article in articles:
         name = article.split("/")[-1]
         asyncio.get_event_loop().run_until_complete(saveScreenshot(article, name))
