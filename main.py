@@ -4,14 +4,21 @@ from pyppeteer import launch
 import requests
 from bs4 import BeautifulSoup
 from PIL import Image
+import argparse
 
 
 def main():
-    word = "omicron"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("word", help="The word to look for in articles")
+    parser.add_argument("numPages", type=int, default=5,
+                        help="Number of pages to look through")
+    args = parser.parse_args()
+    print(args)
+    word = args.word.lower()
     baseUrl = "https://www.bbc.co.uk/search?q=" + word + "&page="
 
     articles = []
-    for i in range(30):
+    for i in range(args.numPages):
         article = requests.get(baseUrl + str(i))
 
         soup = BeautifulSoup(article.text, 'html.parser')
@@ -26,7 +33,7 @@ def main():
                 articles.append(href)
 
     print(articles)
-    print(f"Length: {len(articles)}")
+    print(f"Number of articles: {len(articles)}")
     getArticles(articles, "omicron")
 
 
@@ -43,12 +50,14 @@ def getArticles(articles, word):
         name = article.split("/")[-1]
         asyncio.get_event_loop().run_until_complete(saveScreenshot(article, name))
         found = crop(f'articles/{name}.png', name, word)
-        if found:
+        if found[0]:
             print(f"found {word} in {article}")
-            pil_image = Image.fromarray(found)
+            pil_image = Image.fromarray(found[1])
             images.append(pil_image)
         else:
             print(f"could not find {word} in {article}")
+
+    print(f"\nNumber of images: {len(images)}\n")
 
     makeGif(images)
 

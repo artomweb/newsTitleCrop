@@ -53,11 +53,11 @@ def crop(FILENAME, name, WORDFIND):
                                            h + SPACEY, x - SPACEX:x+w + SPACEX]
                 cv2.imwrite(f"output/{name}.png", imageCropped)
                 color_coverted = cv2.cvtColor(imageCropped, cv2.COLOR_BGR2RGB)
-                return color_coverted
+                return [True, color_coverted]
 
-        return False
+        return [False]
     except KeyboardInterrupt:
         exit()
     except Exception as e:
         print("ERROR:", e)
-        return False
+        return [False]
