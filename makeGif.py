@@ -11,10 +11,8 @@ for r, dirs, files in os.walk(imageDir):
         img = Image.open(imageDir + filename)
         (width, height) = img.size
         r = i // SF
-        if i == 50:
-            print(r)
-        img = img.crop((r, r, width - r, height - r))
-        img = img.resize((width, height), Image.LANCZOS)
+        # img = img.crop((r, r, width - r, height - r))
+        # img = img.resize((width, height), Image.LANCZOS)
         images.append(img)
 
 
