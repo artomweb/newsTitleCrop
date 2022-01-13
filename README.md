@@ -10,4 +10,6 @@ A clip from a [Vice news video](https://www.youtube.com/watch?v=bolyiGMcjBs&t=15
 
 ## Results:
 
+Currently only supports BBC News
+
 ![results](media/Omicron.gif)
