@@ -3,14 +3,12 @@ import asyncio
 from pyppeteer import launch
 import requests
 from bs4 import BeautifulSoup
+from PIL import Image
 
 
 def main():
     word = "omicron"
-    # articles = ["https://www.bbc.co.uk/news/education-59840634", "https://www.bbc.co.uk/news/uk-scotland-59851383",
-    #             "https://www.bbc.co.uk/news/uk-northern-ireland-59849605", "https://www.bbc.co.uk/news/health-59840524", "https://www.bbc.co.uk/news/world-europe-guernsey-59839484"]
-
-    baseUrl = "https://www.bbc.co.uk/search?q=omicron&page="
+    baseUrl = "https://www.bbc.co.uk/search?q=" + word + "&page="
 
     articles = []
     for i in range(30):
@@ -32,15 +30,27 @@ def main():
     getArticles(articles, "omicron")
 
 
+def makeGif(images):
+    images[0].save('output.gif',
+                   save_all=True, append_images=images[1:], optimize=False, duration=120, loop=0)
+
+    print("Saved GIF")
+
+
 def getArticles(articles, word):
+    images = []
     for article in articles:
         name = article.split("/")[-1]
         asyncio.get_event_loop().run_until_complete(saveScreenshot(article, name))
         found = crop(f'articles/{name}.png', name, word)
         if found:
             print(f"found {word} in {article}")
+            pil_image = Image.fromarray(found)
+            images.append(pil_image)
         else:
             print(f"could not find {word} in {article}")
+
+    makeGif(images)
 
 
 async def saveScreenshot(articleURL, name):

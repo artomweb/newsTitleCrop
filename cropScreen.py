@@ -52,7 +52,8 @@ def crop(FILENAME, name, WORDFIND):
                 imageCropped = imgOriginal[y - SPACEY:y +
                                            h + SPACEY, x - SPACEX:x+w + SPACEX]
                 cv2.imwrite(f"output/{name}.png", imageCropped)
-                return True
+                color_coverted = cv2.cvtColor(imageCropped, cv2.COLOR_BGR2RGB)
+                return color_coverted
 
         return False
     except KeyboardInterrupt:
