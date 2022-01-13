@@ -33,7 +33,7 @@ def main():
                 articles.append(href)
 
     print(articles)
-    print(f"Number of articles: {len(articles)}")
+    print(f"\nNumber of articles: {len(articles)}\n")
     getArticles(articles, "omicron")
 
 
