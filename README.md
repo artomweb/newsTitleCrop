@@ -8,8 +8,12 @@ A common thing seen in video essays and documentaries, is a clip/animation showi
 
 A clip from a [Vice news video](https://www.youtube.com/watch?v=bolyiGMcjBs&t=158s&ab_channel=VICENews)
 
-## Results:
-
 Currently only supports BBC News
 
+## Results:
+
 ![results](media/Omicron.gif)
+
+## Result with slow zoom:
+
+![results](media/OmicronZoom.gif)
