@@ -17,3 +17,7 @@ Currently only supports BBC News
 ## Result with slow zoom:
 
 ![results](media/OmicronZoom.gif)
+
+## Result from the Daily Mail
+
+![results](media/Omicron-DM.gif)
