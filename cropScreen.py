@@ -3,7 +3,7 @@ import pytesseract
 
 
 def crop(FILENAME, name, WORDFIND):
-    SPACEY = 350
+    SPACEY = 250
     SPACEX = int(SPACEY * (1920/1080))
 
     try:
@@ -12,7 +12,8 @@ def crop(FILENAME, name, WORDFIND):
         imgOriginal = img.copy()
         imgDraw = img.copy()
 
-        img = img[550:1000, 400:2400]
+        # img = img[550:1000, 400:2400]  # BBC
+        img = img[550:1200, 800:2200]  # DailyMail
 
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -36,7 +37,7 @@ def crop(FILENAME, name, WORDFIND):
 
         for i, c in enumerate(contours):
             x, y, w, h = cv2.boundingRect(c)
-            x += 400
+            x += 800
             y += 550
 
             if w > 100:
@@ -55,9 +56,10 @@ def crop(FILENAME, name, WORDFIND):
                 color_coverted = cv2.cvtColor(imageCropped, cv2.COLOR_BGR2RGB)
                 return [True, color_coverted]
 
-        return [False]
+        print("no cont")
+        return [False, dilation]
     except KeyboardInterrupt:
         exit()
     except Exception as e:
         print("ERROR:", e)
-        return [False]
+        return [False, dilation]
