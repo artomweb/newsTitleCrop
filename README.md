@@ -33,3 +33,8 @@ Currently only supports BBC News
 ## Result from the Daily Mail:
 
 ![results](media/Omicron-DM.gif)
+
+# To-do:
+
+- Add support for the Daily Mail and other news sources and
+- Allow words to be found even if surrounded by punctuation, and crop accordingly
