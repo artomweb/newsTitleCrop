@@ -38,3 +38,4 @@ Currently only supports BBC News.
 
 - Add support for the Daily Mail and other news sources and
 - Allow words to be found even if surrounded by punctuation, and crop accordingly
+- Allow the user to specify parameters like the zoom level, image duration and wether case should be ignored
