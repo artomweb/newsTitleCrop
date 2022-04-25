@@ -26,6 +26,10 @@ Currently only supports BBC News
 
 ![results](media/OmicronZoom.gif)
 
-## Result from the Daily Mail
+## Ukraine result:
+
+![results](media/Ukraine.gif)
+
+## Result from the Daily Mail:
 
 ![results](media/Omicron-DM.gif)

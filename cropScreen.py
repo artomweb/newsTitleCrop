@@ -46,7 +46,7 @@ def crop(FILENAME, name, WORDFIND):
             ROI = imgOriginal[y:y+h, x:x+w]
             cv2.imwrite("proc/ " + str(i) + ".jpg", ROI)
             txt = pytesseract.image_to_string(ROI, config="--psm 6")
-            if txt.lower().strip() == WORDFIND:
+            if txt.lower().strip() == WORDFIND or txt.lower().strip() == (WORDFIND + ":"):
                 # print("found word", WORDFIND)
 
                 imageCropped = imgOriginal[y - SPACEY:y +
