@@ -26,8 +26,6 @@ def main():
         lists = soup.select_one(
             "#main-content").find_all("ul")[0].find_all("li")
 
-        print(lists)
-
         for l in lists:
             href = l.find_all("a")[0]["href"]
             if "news" in href and "articles" not in href:
