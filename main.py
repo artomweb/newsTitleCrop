@@ -23,8 +23,10 @@ def main():
 
         soup = BeautifulSoup(article.text, 'html.parser')
 
-        lists = soup.find_all(class_='ssrcss-v19xcd-Stack e1y4nx260')[0].find_all(
-            "li")
+        lists = soup.select_one(
+            "#main-content").find_all("ul")[0].find_all("li")
+
+        print(lists)
 
         for l in lists:
             href = l.find_all("a")[0]["href"]
@@ -34,7 +36,7 @@ def main():
 
     print(articles)
     print(f"\nNumber of articles: {len(articles)}\n")
-    getArticles(articles, "omicron")
+    getArticles(articles, word)
 
 
 def makeGif(images):
@@ -63,7 +65,7 @@ def getArticles(articles, word):
 
 
 async def saveScreenshot(articleURL, name):
-    browser = await launch()
+    browser = await launch(autoClose=True)
     page = await browser.newPage()
     await page.setViewport({
         "width": 1920,
@@ -76,4 +78,11 @@ async def saveScreenshot(articleURL, name):
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as e:
+        print("\nanother error:")
+        # exit()
+    except KeyboardInterrupt:
+        print("\nKeyboard Interrupt")
+        exit()

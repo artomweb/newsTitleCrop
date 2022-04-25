@@ -10,6 +10,14 @@ A clip from a [Vice news video](https://www.youtube.com/watch?v=bolyiGMcjBs&t=15
 
 Currently only supports BBC News
 
+## Use:
+
+    python main.py [-h] word numPages
+
+## Example
+
+    python main.py metaverse 1
+
 ## Results:
 
 ![results](media/Omicron.gif)
